@@ -19,12 +19,7 @@ Thumbs.db
 !/vendor/.htaccess
 
 # User installed plugins
-/engine/Shopware/Plugins/Community/Backend/*
-/engine/Shopware/Plugins/Community/Core/*
-/engine/Shopware/Plugins/Community/Frontend/*
-/engine/Shopware/Plugins/Local/Backend/*
-/engine/Shopware/Plugins/Local/Core/*
-/engine/Shopware/Plugins/Local/Frontend/*
+/engine
 
 /custom/plugins/*
 
