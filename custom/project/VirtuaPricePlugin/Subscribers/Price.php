@@ -1,24 +1,33 @@
 <?php
 namespace VirtuaPricePlugin\Subscribers;
-
 use Enlight\Event\SubscriberInterface;
 use Enlight_Event_EventArgs;
-use Symfony\Component\DependencyInjection\Container;
-
+use Shopware\Components\Plugin\CachedConfigReader;
+/**
+ * Class Price
+ * @package VirtuaPricePlugin\Subscribers
+ */
 class Price implements SubscriberInterface
 {
     /**
-     * @var bool
+     * @var CachedConfigReader
      */
-    private $hidePriceForAnon;
-
-    public function __construct(Container $container)
+    private $pluginConfig;
+    /**
+     * Price constructor.
+     * @param CachedConfigReader $cachedConfigReader
+     */
+    public function __construct(CachedConfigReader $cachedConfigReader)
     {
-        $this->hidePriceForAnon = (bool)$container->get('shopware.plugin.cached_config_reader')
-                ->getByPluginName('PricePlugin', Shopware()->Shop())['hide_price_for_anon'] &&
-            !Shopware()->Modules()->Admin()->sCheckUser();
+        $this->pluginConfig = $cachedConfigReader->getByPluginName('VirtuaPricePlugin', Shopware()->Shop());
     }
-
+    /**
+     * @return bool
+     */
+    public function hidePriceForAnon()
+    {
+        return $this->pluginConfig['hide_price_for_anon'] && !Shopware()->Modules()->Admin()->sCheckUser();
+    }
     /**
      * @return array|void
      */
@@ -30,9 +39,11 @@ class Price implements SubscriberInterface
             'Enlight_Controller_Action_PostDispatch_Widgets_Listing' => 'onFrontendAction'
         ];
     }
-
+    /**
+     * @param Enlight_Event_EventArgs $args
+     */
     public function onFrontendAction(Enlight_Event_EventArgs $args): void
     {
-        $args->getSubject()->View()->assign('hidePrice', $this->hidePriceForAnon);
+        $args->getSubject()->View()->assign('hidePrice', $this->hidePriceForAnon());
     }
 }
