@@ -12,9 +12,7 @@ class Price implements SubscriberInterface
      */
     private $hidePriceForAnon;
 
-    public function __construct(
-        Container $container
-    )
+    public function __construct(Container $container)
     {
         $this->hidePriceForAnon = (bool)$container->get('shopware.plugin.cached_config_reader')
                 ->getByPluginName('PricePlugin', Shopware()->Shop())['hide_price_for_anon'] &&
