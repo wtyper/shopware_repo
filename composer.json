@@ -81,7 +81,8 @@
         "league/flysystem-aws-s3-v3": "1.0.19",
         "superbalist/flysystem-google-storage": "6.0.0",
         "stecman/symfony-console-completion": "0.10.1",
-        "beberlei/doctrineextensions": "1.2.1"
+        "beberlei/doctrineextensions": "1.2.1",
+        "frosh/shopware-profiler": "^1.4"
     },
     "suggest": {
         "ext-apcu": "*",
