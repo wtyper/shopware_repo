@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+    <elements>
+        <element required="true" type="boolean">
+            <name>virtua_display_featured_products</name>
+            <label>Display Featured Products</label>
+            <value>0</value>
+        </element>
+        <element required="true" type="number">
+            <name>virtua_number_of_products</name>
+            <label>Number of products</label>
+            <value>3</value>
+        </element>
+    </elements>
+</config>
