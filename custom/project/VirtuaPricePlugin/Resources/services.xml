@@ -3,15 +3,14 @@
            xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="price_plugin.subscribers.template_registration"
-                 class="VirtuaPricePlugin\Subscribers\TemplateRegistration">
+        <service class="VirtuaPricePlugin\Subscribers\TemplateRegistration" id="virtua_price_plugin.subscribers.template_registration">
             <argument>%virtua_price_plugin.plugin_dir%</argument>
-            <argument type="service" id="template"/>
+            <argument id="template" type="service"/>
             <tag name="shopware.event_subscriber"/>
         </service>
-        <service class="VirtuaPricePlugin\Subscribers\Price" id="price_plugin.subscribers.price">
+        <service class="VirtuaPricePlugin\Subscribers\Price" id="virtua_price_plugin.subscribers.price">
+            <argument id="shopware.plugin.cached_config_reader" type="service"/>
             <tag name="shopware.event_subscriber"/>
-            <argument type="service" id="service_container"/>
         </service>
     </services>
 </container>
