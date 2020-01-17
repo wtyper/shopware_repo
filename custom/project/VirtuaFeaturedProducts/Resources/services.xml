@@ -7,5 +7,12 @@
                  id="virtua_featured_products.subscribers.template_registration">
             <tag name="shopware.event_subscriber"/>
         </service>
+        <service id="virtua_featured_products.subscriber.featured_products_fetcher"
+                 class="VirtuaFeaturedProducts\Subscribers\FeaturedProducts">
+            <tag name="shopware.event_subscriber"/>
+            <argument type="service" id="dbal_connection"/>
+            <argument type="service" id="shopware_storefront.list_product_service"/>
+            <argument type="service" id="service_container"/>
+        </service>
     </services>
 </container>
