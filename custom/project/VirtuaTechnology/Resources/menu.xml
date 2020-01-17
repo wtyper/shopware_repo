@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.4/engine/Shopware/Components/Plugin/schema/menu.xsd">
+    <entries>
+        <entry>
+            <name>Virtua</name>
+            <label>Virtua</label>
+            <class>sprite-application-block</class>
+            <parent>Article</parent>
+            <children>
+                <entry>
+                    <name>VirtuaTechnology</name>
+                    <label>Technologies</label>
+                    <controller>VirtuaTechnology</controller>
+                    <action>Index</action>
+                    <class>sprite-application-block</class>
+                </entry>
+            </children>
+        </entry>
+    </entries>
+</menu>
