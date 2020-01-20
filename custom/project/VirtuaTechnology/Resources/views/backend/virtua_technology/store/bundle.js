@@ -6,6 +6,5 @@ Ext.define('Shopware.apps.VirtuaTechnology.store.Bundle', {
             controller: 'VirtuaTechnology'
         };
     },
-
     model: 'Shopware.apps.VirtuaTechnology.model.Bundle'
 });
