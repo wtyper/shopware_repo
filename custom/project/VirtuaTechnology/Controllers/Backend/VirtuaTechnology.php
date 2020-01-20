@@ -15,7 +15,7 @@ class Shopware_Controllers_Backend_VirtuaTechnology extends Shopware_Controllers
     public function save($data)
     {
         $slugService = $this->container->get('shopware.slug');
-        $data['url'] = $slugService->slugify($data['name']);
+        $data['url'] = strtolower($slugService->slugify($data['name']));
         return parent::save($data);
     }
 }

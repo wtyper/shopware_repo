@@ -26,15 +26,15 @@ class Shopware_Controllers_Frontend_Technologies extends Enlight_Controller_Acti
 
     public function detailAction()
     {
-        $wordId = $this->Request()->getParam('technology_id');
+        $technology_id = $this->Request()->getParam('technology_id');
         /** @var QueryBuilder $queryBuilder */
         $queryBuilder = $this->container->get('dbal_connection')->createQueryBuilder();
         $technology = $queryBuilder
-            ->select('vt.id, vt.name, vt.description, vt.url', 'm.path as image')
+            ->select('vt.id, vt.name, vt.description, vt.url, m.path as image')
             ->from('s_virtua_technology', 'vt')
             ->leftJoin('vt', 's_media', 'm', 'm.id = vt.file')
-            ->where('vt.id = :id')
-            ->setParameter(':id', $wordId)
+            ->where('vt.id = :technology_id')
+            ->setParameter(':technology_id', $technology_id)
             ->execute()
             ->fetch();
 

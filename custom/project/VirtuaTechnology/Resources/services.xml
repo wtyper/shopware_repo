@@ -8,5 +8,27 @@
                  id="virtua_technology.subscribers.template_registration">
             <tag name="shopware.event_subscriber"/>
         </service>
+        <service class="VirtuaTechnology\Subscribers\ArticleTechnologies"
+                 id="virtua_technology.subscribers.article_technologies">
+            <tag name="shopware.event_subscriber"/>
+            <argument type="service" id="dbal_connection"/>
+        </service>
+        <service id="swag_bundle.bundle_criteria_request_handler"
+                 class="VirtuaTechnology\Bundle\SearchBundle\CriteriaRequestHandler">
+            <tag name="criteria_request_handler"/>
+        </service>
+
+        <service id="swag_bundle.bundle_condition_handler"
+                 class="VirtuaTechnology\Bundle\SearchBundleDBAL\Condition\VirtuaTechnologyConditionHandler">
+            <tag name="condition_handler_dbal"/>
+            <argument type="service" id="dbal_connection"/>
+        </service>
+
+        <service id="swag_bundle.bundle_facet_handler"
+                 class="VirtuaTechnology\Bundle\SearchBundleDBAL\Facet\VirtuaTechnologyFacetHandler">
+            <argument type="service" id="shopware_searchdbal.dbal_query_builder_factory"/>
+            <tag name="facet_handler_dbal"/>
+            <argument type="service" id="dbal_connection"/>
+        </service>
     </services>
 </container>

@@ -17,6 +17,7 @@ use PDO;
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Components\Plugin\Context\UninstallContext;
+use VirtuaTechnology\Models\VirtuaTechnologyModel;
 
 class VirtuaTechnology extends Plugin{
     /**
@@ -25,6 +26,19 @@ class VirtuaTechnology extends Plugin{
     public function install(InstallContext $context): void
     {
         $this->updateSchema();
+        $this->container->get('shopware_attribute.crud_service')
+            ->update(
+                's_articles_attributes',
+                'virtua_technology',
+                'multi_selection',
+                [
+                    'entity' => VirtuaTechnologyModel::class,
+                    'displayInBackend' => true,
+                    'label' => 'Virtua Technology',
+                ],
+                null,
+                true
+            );
     }
 
     /**
@@ -66,6 +80,9 @@ class VirtuaTechnology extends Plugin{
      */
     public function uninstall(UninstallContext $context)
     {
+        $service = $this->container->get('shopware_attribute.crud_service');
+        $service->delete('s_articles_attributes', 'technology');
+        $service->delete('s_articles_attributes', 'virtua_technology');
         $tool = new SchemaTool($this->container->get('models'));
         $classes = $this->getModelMetaData();
         $tool->dropSchema($classes);
