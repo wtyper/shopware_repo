@@ -81,7 +81,6 @@ class VirtuaTechnology extends Plugin{
     public function uninstall(UninstallContext $context)
     {
         $service = $this->container->get('shopware_attribute.crud_service');
-        $service->delete('s_articles_attributes', 'technology');
         $service->delete('s_articles_attributes', 'virtua_technology');
         $tool = new SchemaTool($this->container->get('models'));
         $classes = $this->getModelMetaData();
