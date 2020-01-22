@@ -3,6 +3,7 @@
 namespace VirtuaTechnology;
 
 use Doctrine\ORM\Tools\SchemaTool;
+use Doctrine\ORM\Tools\ToolsException;
 use Exception;
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\InstallContext;
@@ -17,17 +18,22 @@ class VirtuaTechnology extends Plugin{
         $this->updateSchema();
     }
 
+    /**
+     * {@inheritdoc}
+     * @throws ToolsException
+     */
     private function updateSchema(): void
     {
-
-        $tool = new SchemaTool($this->container->get('models'));
-        $classes = $this->getModelMetaData();
-
-        try {
-            $tool->dropSchema($classes);
-        } catch (Exception $e){
+        $modelManager = $this->container->get('models');
+        $tool = new SchemaTool($modelManager);
+        $schemaManager = $modelManager->getConnection()->getSchemaManager();
+        foreach ($this->getModelMetaData() as $class) {
+            if (!$schemaManager->tablesExist([$class->getTableName()])) {
+                $tool->createSchema([$class]);
+            } else {
+                $tool->updateSchema([$class], true);
+            }
         }
-        $tool->createSchema($classes);
     }
 
     private function getModelMetaData(): array
@@ -40,8 +46,8 @@ class VirtuaTechnology extends Plugin{
      */
     public function uninstall(UninstallContext $context)
     {
-        $tool = new SchemaTool($this->container->get('models'));
-        $classes = $this->getModelMetaData();
-        $tool->dropSchema($classes);
+        if ($context->keepUserData()) {
+            return;
+        }
     }
 }
