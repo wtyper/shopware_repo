@@ -82,7 +82,8 @@
         "superbalist/flysystem-google-storage": "6.0.0",
         "stecman/symfony-console-completion": "0.10.1",
         "beberlei/doctrineextensions": "1.2.1",
-        "frosh/shopware-profiler": "^1.4"
+        "frosh/shopware-profiler": "^1.4",
+        "ext-xdebug": "^2.9"
     },
     "suggest": {
         "ext-apcu": "*",
