@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+    <elements>
+        <element type="select">
+            <name>not_shipping</name>
+            <label>Not shipping</label>
+            <store>
+                <option>
+                    <value>Mon</value>
+                    <label>Monday</label>
+                </option>
+                <option>
+                    <value>Tue</value>
+                    <label>Tuesday</label>
+                </option>
+                <option>
+                    <value>Wed</value>
+                    <label>Wednesday</label>
+                </option>
+                <option>
+                    <value>Thu</value>
+                    <label>Thursday</label>
+                </option>
+                <option>
+                    <value>Fri</value>
+                    <label>Friday</label>
+                </option>
+                <option>
+                    <value>Sat</value>
+                    <label>Saturday</label>
+                </option>
+                <option>
+                    <value>Sun</value>
+                    <label>Sunday</label>
+                </option>
+            </store>
+            <options>
+                <multiSelect>true</multiSelect>
+            </options>
+        </element>
+        <element type="time" required="true">
+            <name>ships_until</name>
+            <label>Ships until</label>
+        </element>
+        <element type="date">
+            <name>holidays_start</name>
+            <label>Holidays start date</label>
+        </element>
+        <element type="date">
+            <name>holidays_end</name>
+            <label>Holidays end date</label>
+        </element>
+    </elements>
+</config>

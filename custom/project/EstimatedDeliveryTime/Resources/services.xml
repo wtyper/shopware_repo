@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service class="EstimatedDeliveryTime\Subscribers\DetailDeliveryTime"
+                 id="estimated_delivery_time.subscribers.detail_delivery_time">
+            <tag name="shopware.event_subscriber"/>
+            <argument type="service" id="service_container"/>
+        </service>
+    </services>
+</container>
