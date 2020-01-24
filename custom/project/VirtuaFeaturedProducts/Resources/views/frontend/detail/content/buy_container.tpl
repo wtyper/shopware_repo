@@ -14,8 +14,10 @@
             {/if}
         </span>
     </li>
+    {if $sFeaturedArticles}
         <div class="panel has--border is--rounded">
             <div class="panel--title is--underline">Featured Products</div>
             {include file="frontend/_includes/product_slider.tpl" articles=$sFeaturedArticles}
         </div>
+    {/if}
 {/block}
