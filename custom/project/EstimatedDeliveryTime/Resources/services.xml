@@ -5,8 +5,8 @@
     <services>
         <service class="EstimatedDeliveryTime\Subscribers\DetailDeliveryTime"
                  id="estimated_delivery_time.subscribers.detail_delivery_time">
+            <argument id="service_container" type="service"/>
             <tag name="shopware.event_subscriber"/>
-            <argument type="service" id="service_container"/>
         </service>
     </services>
 </container>
