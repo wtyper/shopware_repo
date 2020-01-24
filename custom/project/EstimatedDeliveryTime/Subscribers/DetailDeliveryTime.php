@@ -10,6 +10,7 @@ use Enlight_Controller_Action;
 class DetailDeliveryTime implements SubscriberInterface
 {
     private const TIME_FORMAT = 'H:i:s';
+    private const DATE_FORMAT = 'd-m-y';
 
     /**
      * @var array
@@ -98,7 +99,7 @@ class DetailDeliveryTime implements SubscriberInterface
                 }
             }
         }
-//     dd(date(self::DATE_FORMAT, $this->shippingDate));
+        dd(date(self::DATE_FORMAT, $this->shippingDate)); //SPRAWDŹ TO 
     }
 
     private function setShippingDateWithHolidays(): void
