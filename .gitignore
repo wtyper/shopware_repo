@@ -19,7 +19,7 @@ Thumbs.db
 !/vendor/.htaccess
 
 # User installed plugins
-/engine
+/engine/*
 
 /custom/plugins/*
 /custom/plugins/FroshProfiler/
@@ -72,14 +72,10 @@ Thumbs.db
 .php_cs
 .php_cs.cache
 phpstan.phar
-/dev-ops/docker/_volumes
+/dev-ops/*
 /docker-compose.override.yml
 /.psh.yml
 /.psh.yaml
-/dev-ops/docker/containers/app/Dockerfile
-/dev-ops/docker/containers/elasticsearch/Dockerfile
-/dev-ops/docker/containers/mysql/Dockerfile
-/dev-ops/docker/containers/mysql/dev.cnf
 /.psh.yaml.override
 /.psh.yml.override
 
